@@ -14,7 +14,7 @@ RUN npm install
 COPY . .
 
 # Expose the port that the service registry will run on
-EXPOSE 3003
+EXPOSE 8765
 
 # Run the application
 CMD ["node", "server.js"]
