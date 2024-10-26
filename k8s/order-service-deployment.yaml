@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: order-service-app
+spec:
+  selector:
+    matchLabels:
+      app: order-service-app
+  template:
+    metadata:
+      labels:
+        app: order-service-app
+    spec:
+      containers:
+        - name: order-service-app
+          image: mukeshkr24/order-service
+          ports:
+            - containerPort: 3001
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: order-service-svc
+spec:
+  selector:
+    app: order-service-app
+  ports:
+    - port: 80
+      targetPort: 3001
